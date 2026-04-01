@@ -1,0 +1,20 @@
+{
+  "name": "cse341-finalproject",
+  "version": "1.0.0",
+  "description": "Final Project",
+  "homepage": "https://github.com/Kelwood22/cse341-finalproject#readme",
+  "bugs": {
+    "url": "https://github.com/Kelwood22/cse341-finalproject/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kelwood22/cse341-finalproject.git"
+  },
+  "license": "ISC",
+  "author": "Kelsey Woodland",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
