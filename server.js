@@ -17,6 +17,9 @@ app.use(express.json());
 connectDB();
 
 // Main routes
+app.get('/', (req, res) => {
+  res.send('Our API is running...');
+});
 app.use('/', require('./routes'));
 
 //Swagger documentation
