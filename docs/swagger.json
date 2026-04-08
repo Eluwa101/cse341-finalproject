@@ -13,25 +13,34 @@
   "paths": {
     "/users/": {
       "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Create a user",
         "description": "",
         "parameters": [
           {
             "name": "body",
             "in": "body",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
                 "name": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "Iruoghene"
                 },
                 "email": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "Iruoghene@example.com"
                 },
                 "role": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "customer"
                 },
                 "oauthId": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "123456"
                 }
               }
             }
@@ -47,6 +56,10 @@
         }
       },
       "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Get all users",
         "description": "",
         "responses": {
           "200": {
@@ -60,6 +73,10 @@
     },
     "/users/{id}": {
       "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Get user by ID",
         "description": "",
         "parameters": [
           {
@@ -82,6 +99,10 @@
         }
       },
       "put": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Update a user",
         "description": "",
         "parameters": [
           {
@@ -89,6 +110,28 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "Updated Name"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "updated@example.com"
+                },
+                "role": {
+                  "type": "string",
+                  "example": "admin"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -104,6 +147,10 @@
         }
       },
       "delete": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Delete a user",
         "description": "",
         "parameters": [
           {
@@ -128,28 +175,42 @@
     },
     "/products/": {
       "post": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Create a product",
         "description": "",
         "parameters": [
           {
             "name": "body",
             "in": "body",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
                 "name": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "Chocolate Cake"
                 },
                 "description": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "Delicious soft cake"
                 },
                 "price": {
-                  "example": "any"
+                  "type": "number",
+                  "example": 25000
                 },
                 "category": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "cakes"
                 },
                 "imageUrl": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "https://example.com/image.jpg"
+                },
+                "stock": {
+                  "type": "number",
+                  "example": 10
                 }
               }
             }
@@ -165,6 +226,10 @@
         }
       },
       "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Get all products",
         "description": "",
         "responses": {
           "200": {
@@ -178,6 +243,10 @@
     },
     "/products/{id}": {
       "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Get product by ID",
         "description": "",
         "parameters": [
           {
@@ -200,6 +269,10 @@
         }
       },
       "put": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Update product",
         "description": "",
         "parameters": [
           {
@@ -207,6 +280,24 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "price": {
+                  "type": "number",
+                  "example": 30000
+                },
+                "stock": {
+                  "type": "number",
+                  "example": 5
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -222,6 +313,320 @@
         }
       },
       "delete": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Delete product",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/orders/": {
+      "post": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "Create an order",
+        "description": "",
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userId": {
+                    "example": "69cf1d9cd2fc2d5ef09951fc"
+                  },
+                  "products": {
+                    "example": [
+                      "69cf34ae754dd9d26ef0bada"
+                    ]
+                  },
+                  "totalPrice": {
+                    "example": 32000
+                  },
+                  "status": {
+                    "example": "pending"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "Get all orders",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/orders/{id}": {
+      "get": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "Get order by ID",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "Update order",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string",
+                  "example": "completed"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "Delete order",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/reviews/": {
+      "post": {
+        "tags": [
+          "Reviews"
+        ],
+        "summary": "Create a review",
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "userId": {
+                  "type": "string",
+                  "example": "69cf1d9cd2fc2d5ef09951fc"
+                },
+                "productId": {
+                  "type": "string",
+                  "example": "69cf34ae754dd9d26ef0bada"
+                },
+                "rating": {
+                  "type": "number",
+                  "example": 5
+                },
+                "comment": {
+                  "type": "string",
+                  "example": "Amazing product!"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Reviews"
+        ],
+        "summary": "Get all reviews",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/reviews/{id}": {
+      "get": {
+        "tags": [
+          "Reviews"
+        ],
+        "summary": "Get review by ID",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Reviews"
+        ],
+        "summary": "Update review",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "rating": {
+                  "type": "number",
+                  "example": 4
+                },
+                "comment": {
+                  "type": "string",
+                  "example": "Updated review text"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Reviews"
+        ],
+        "summary": "Delete review",
         "description": "",
         "parameters": [
           {
@@ -245,134 +650,6 @@
       }
     },
     "/auth/login": {
-      "get": {
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/": {
-      "post": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "example": "any"
-                },
-                "description": {
-                  "example": "any"
-                },
-                "price": {
-                  "example": "any"
-                },
-                "category": {
-                  "example": "any"
-                },
-                "imageUrl": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "400": {
-            "description": "Bad Request"
-          }
-        }
-      },
-      "get": {
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/{id}": {
-      "get": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "put": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "404": {
-            "description": "Not Found"
-          }
-        }
-      },
-      "delete": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/login": {
       "get": {
         "description": "",
         "responses": {
