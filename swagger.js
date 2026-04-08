@@ -6,8 +6,8 @@ const doc = {
     title: 'CSE341 Final Project API',
     description: 'API documentation for the final project'
   },
-  host: 'localhost:3000',
-  schemes: ['http'],
+  host: 'cse341-finalproject-jeql.onrender.com',
+  schemes: ['https'],
   basePath:'/'
 };
 
