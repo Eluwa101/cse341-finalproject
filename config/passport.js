@@ -12,7 +12,7 @@ passport.use(
     async (accessToken, refreshToken, profile, done) => {
       try {
     
-        let user = await User.findOne({ githubId: profile.id });
+        let user = await User.findOne({ oauthId: profile.id });
 
         // Create if not exists
         if (!user) {
