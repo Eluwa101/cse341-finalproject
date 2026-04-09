@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/reviewsController');
-
+const isAuthenticated = require("../middleware/authMiddleware");
 // Create review
 router.post(
   '/',
@@ -43,6 +43,7 @@ router.get(
 // Update review
 router.put(
   '/:id',
+  isAuthenticated,
   /*
     #swagger.tags = ['Reviews']
     #swagger.summary = 'Update review'
@@ -61,6 +62,7 @@ router.put(
 // Delete review
 router.delete(
   '/:id',
+  isAuthenticated,
   /* #swagger.tags = ['Reviews']
      #swagger.summary = 'Delete review'
   */

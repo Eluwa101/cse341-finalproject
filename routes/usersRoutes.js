@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/usersController');
-
+const auth = require("../middleware/authMiddleware");
 // Create user
 router.post(
   '/',
@@ -42,7 +42,7 @@ router.get(
 
 // Update user
 router.put(
-  '/:id',
+  '/:id', auth,
   /*
     #swagger.tags = ['Users']
     #swagger.summary = 'Update a user'
@@ -61,7 +61,7 @@ router.put(
 
 // Delete user
 router.delete(
-  '/:id',
+  '/:id', auth,
   /* #swagger.tags = ['Users']
      #swagger.summary = 'Delete a user'
   */

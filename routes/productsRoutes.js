@@ -1,12 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/productsController');
+const auth = require("../middleware/authMiddleware");
 
 // Create product
 router.post(
   '/',
+  auth,
   /*
     #swagger.tags = ['Products']
+    #swagger.security = [{ "BearerAuth": [] }]
     #swagger.summary = 'Create a product'
     #swagger.parameters['body'] = {
       in: 'body',
@@ -45,6 +48,7 @@ router.get(
 // Update product
 router.put(
   '/:id',
+  auth,
   /*
     #swagger.tags = ['Products']
     #swagger.summary = 'Update product'
@@ -63,6 +67,7 @@ router.put(
 // Delete product
 router.delete(
   '/:id',
+  auth,
   /* #swagger.tags = ['Products']
      #swagger.summary = 'Delete product'
   */
