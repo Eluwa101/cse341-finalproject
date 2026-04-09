@@ -12,14 +12,15 @@ const {authController} = require("../controllers/authController")
 // Redirect to GitHub OAuth
 router.get("/login", (req, res, next) => {
   // #swagger.ignore = true
-  passport.authenticate("github", { scope: ["user:email"] })(req, res, next);
+  passport.authenticate("github", { scope: ["user:email"], session: false })(req, res, next);
 });
 
 //  Callback GitHub
 router.get(
   "/github/callback",
   passport.authenticate("github", {
-    failureRedirect: "/"
+    failureRedirect: "/",
+    session: false
   }),
     authController  
 )
