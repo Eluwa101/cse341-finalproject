@@ -7,7 +7,7 @@ const doc = {
     description: 'API documentation for the final project'
   },
   host: 'cse341-finalproject-jeql.onrender.com',
-  schemes: ['http', 'https'],
+  schemes: ['https'],
   basePath:'/',
    securityDefinitions: {
     bearerAuth: {
