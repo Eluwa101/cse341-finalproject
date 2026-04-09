@@ -400,38 +400,45 @@
         ],
         "summary": "Create an order",
         "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "userId": {
+                  "type": "string",
+                  "example": "69cf1d9cd2fc2d5ef09951fc"
+                },
+                "products": {
+                  "type": "array",
+                  "example": [
+                    "69cf34ae754dd9d26ef0bada"
+                  ],
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "totalPrice": {
+                  "type": "number",
+                  "example": 32000
+                },
+                "status": {
+                  "type": "string",
+                  "example": "pending"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
           "201": {
             "description": "Created"
           },
           "400": {
             "description": "Bad Request"
-          }
-        },
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "userId": {
-                    "example": "69cf1d9cd2fc2d5ef09951fc"
-                  },
-                  "products": {
-                    "example": [
-                      "69cf34ae754dd9d26ef0bada"
-                    ]
-                  },
-                  "totalPrice": {
-                    "example": 32000
-                  },
-                  "status": {
-                    "example": "pending"
-                  }
-                }
-              }
-            }
           }
         }
       },
