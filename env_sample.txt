@@ -1,0 +1,5 @@
+PORT=8080
+MONGODB_URI=Mongo_Url_Link
+GITHUB_CLIENT_ID=GitHub_Client_Id
+GITHUB_CLIENT_SECRET=GitHub_Client_Secret
+GITHUB_CALLBACK_URL=GitHub_Callback_Url

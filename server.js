@@ -1,13 +1,26 @@
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
+dotenv.config();
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./docs/swagger.json');
 const connectDB = require('./config/db');
+const session = require('express-session')
+const passport = require("./config/passport")
+const GitHubStrategy = require('passport-github2').Strategy
 
-dotenv.config();
 const app = express();
 const port = process.env.PORT || 3000;
+
+// Github Oauth 
+app.use(session({
+  secret: "secretkey",
+  resave: false,
+  saveUninitialized: true
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 
 // Middleware
