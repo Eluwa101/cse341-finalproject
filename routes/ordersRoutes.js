@@ -8,25 +8,20 @@ router.post(
   /* 
     #swagger.tags = ['Orders']
     #swagger.summary = 'Create an order'
-    #swagger.requestBody = {
+    #swagger.parameters['body'] = {
+      in: 'body',
       required: true,
-      content: {
-        "application/json": {
-          schema: {
-            type: "object",
-            properties: {
-              userId: { example: "69cf1d9cd2fc2d5ef09951fc" },
-              products: { example: ["69cf34ae754dd9d26ef0bada"] },
-              totalPrice: { example: 32000 },
-              status: { example: "pending" }
-            }
-          }
-        }
+      schema: {
+        userId: '69cf1d9cd2fc2d5ef09951fc',
+        products: ['69cf34ae754dd9d26ef0bada'],
+        totalPrice: 32000,
+        status: 'pending'
       }
     }
   */
   controller.createOrder
 );
+
 
 // Get all orders
 router.get('/', 
