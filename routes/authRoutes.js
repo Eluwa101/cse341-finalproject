@@ -10,10 +10,10 @@ const {authController} = require("../controllers/authController")
 
 
 // Redirect to GitHub OAuth
-router.get("/login", (req, res, next) => {
+router.get("/login",
   // #swagger.ignore = true
-  passport.authenticate("github", { scope: ["user:email"], session: false })(req, res, next);
-});
+  passport.authenticate("github", { scope: ["user:email"], session: false })
+);
 
 //  Callback GitHub
 router.get(

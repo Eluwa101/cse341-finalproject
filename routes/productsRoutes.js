@@ -9,7 +9,7 @@ router.post(
   auth,
   /*
     #swagger.tags = ['Products']
-    #swagger.security = [{ "BearerAuth": [] }]
+    #swagger.security = [{ "bearerAuth": [] }]
     #swagger.summary = 'Create a product'
     #swagger.parameters['body'] = {
       in: 'body',

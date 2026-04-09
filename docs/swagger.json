@@ -5,11 +5,20 @@
     "description": "API documentation for the final project",
     "version": "1.0.0"
   },
-  "host": "cse341-finalproject-jeql.onrender.com",
+  "host": "localhost:3000",
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "Local development"
+    },
+    {
+      "url": "https://cse341-finalproject-jeql.onrender.com",
+      "description": "Production"
+    }
+  ],
   "basePath": "/",
   "schemes": [
-    "http",
-    "https"
+    "http"
   ],
   "securityDefinitions": {
     "bearerAuth": {
@@ -259,7 +268,7 @@
         },
         "security": [
           {
-            "BearerAuth": []
+            "bearerAuth": []
           }
         ]
       },
@@ -727,211 +736,6 @@
       }
     },
     "/auth/logout": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
-    "/": {
-      "post": {
-        "tags": [
-          "Products"
-        ],
-        "summary": "Create a product",
-        "description": "",
-        "parameters": [
-          {
-            "name": "authorization",
-            "in": "header",
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string",
-                  "example": "Chocolate Cake"
-                },
-                "description": {
-                  "type": "string",
-                  "example": "Delicious soft cake"
-                },
-                "price": {
-                  "type": "number",
-                  "example": 25000
-                },
-                "category": {
-                  "type": "string",
-                  "example": "cakes"
-                },
-                "imageUrl": {
-                  "type": "string",
-                  "example": "https://example.com/image.jpg"
-                },
-                "stock": {
-                  "type": "number",
-                  "example": 10
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          }
-        },
-        "security": [
-          {
-            "BearerAuth": []
-          }
-        ]
-      },
-      "get": {
-        "tags": [
-          "Products"
-        ],
-        "summary": "Get all products",
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/{id}": {
-      "get": {
-        "tags": [
-          "Products"
-        ],
-        "summary": "Get product by ID",
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Products"
-        ],
-        "summary": "Update product",
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "authorization",
-            "in": "header",
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "price": {
-                  "type": "number",
-                  "example": 30000
-                },
-                "stock": {
-                  "type": "number",
-                  "example": 5
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Products"
-        ],
-        "summary": "Delete product",
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "authorization",
-            "in": "header",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/logout": {
       "get": {
         "description": "",
         "responses": {
