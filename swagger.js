@@ -8,10 +8,6 @@ const doc = {
 
   servers: [
     {
-      url: "http://localhost:3000",
-      description: "Local development"
-    },
-    {
       url: "https://cse341-finalproject-jeql.onrender.com",
       description: "Production"
     }
