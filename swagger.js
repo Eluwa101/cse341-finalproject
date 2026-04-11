@@ -6,9 +6,6 @@ const doc = {
     description: 'API documentation for the final project'
   },
 
-  host: "localhost:3000",
-  schemes: ["http"],
-
   servers: [
     {
       url: "http://localhost:3000",
